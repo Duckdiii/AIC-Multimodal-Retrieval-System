@@ -1,0 +1,87 @@
+# Python caches and test artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Virtual environments and local environment files
+.venv/
+venv/
+env/
+ENV/
+.env
+.env.*
+!.env.example
+
+# Local caches, credentials, and runtime databases
+.cache/
+config.json
+config.local.json
+!config.example.json
+*.pem
+*.key
+*.p12
+*.pfx
+agno_storage.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Logs
+logs/
+*.log
+
+# External AIC datasets and features
+Keyframes/
+keyframes/
+clip_features/
+map-keyframes-aic25-b1/
+media-info-aic25-b1/
+
+# Generated retrieval indexes and metadata
+index/
+metadata/
+output_keyframes/
+output_keyframes_smoke/
+*.rvdb
+*.faiss
+*.index
+*.npy
+*.npz
+*.pkl
+*.pickle
+
+# Generated exports and results
+exports/
+result/
+results/
+submission_*.csv
+
+# Screenshots and temporary/build artifacts
+screenshots/
+screenshot_*.png
+gui_screenshot*.png
+*_screenshot.png
+build/
+dist/
+*.egg-info/
+*.tmp
+*.temp
+*.bak
+*.swp
+*.zip
+*.7z
+*.tar
+*.tar.gz
+
+# IDE and OS metadata
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

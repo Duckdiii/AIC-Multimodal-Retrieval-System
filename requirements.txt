@@ -1,0 +1,38 @@
+# AIC AI Challenge - Competition GUI/runtime dependencies
+# Tested with Python 3.11. Install a suitable PyTorch build for your CPU/CUDA
+# environment first when the default wheel is not appropriate.
+
+# CLIP model and numerical runtime
+torch>=2.0,<3
+transformers>=4.30,<5
+safetensors>=0.3
+numpy>=1.24,<2
+scikit-learn>=1.2,<2
+Pillow>=9.5,<12
+tqdm>=4.65,<5
+pydantic>=1.10,<2
+
+# FAISS and unified .rvdb loading
+faiss-cpu>=1.7.4
+h5py>=3.9,<4
+lz4>=4.3,<5
+opencv-python>=4.8,<5
+pandas>=1.5,<3
+
+# Desktop GUI and compact runtime status
+PyQt5>=5.15.9,<5.16
+psutil>=5.9,<7
+
+# Focused regression tests
+pytest>=7.4,<9
+
+# Optional/legacy integrations are intentionally not installed by default:
+# openai                  # LLM query enhancement
+# agno                    # Agent/session integration
+# agentops                # Agent monitoring
+# spacy                   # Legacy NLP processing
+# langdetect              # Language detection
+# requests                # Dormant network/remote-index GUI helpers
+# Flask Flask-Cors        # Legacy HTTP API
+# python-socketio eventlet
+# psycopg[binary]         # Optional PostgreSQL Agno storage

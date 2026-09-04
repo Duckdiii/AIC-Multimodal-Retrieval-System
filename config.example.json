@@ -1,0 +1,103 @@
+{
+  "system": {
+    "name": "Enhanced Retrieval System",
+    "version": "2.1",
+    "debug": false,
+    "max_workers": 4,
+    "unicode_support": true,
+    "encoding": "utf-8"
+  },
+  "paths": {
+    "keyframes": "keyframes/",
+    "models": "models/",
+    "cache": ".cache/",
+    "exports": "exports/",
+    "logs": "logs/",
+    "index": "index/",
+    "metadata": "metadata/",
+    "map_keyframes": "map-keyframes-aic25-b1/"
+  },
+  "retrieval": {
+    "faiss_index_type": "IndexFlatIP",
+    "search_limit": 50,
+    "similarity_threshold": 0.7,
+    "temporal_window": 3,
+    "enable_gpu": true,
+    "validate_consistency": true,
+    "allow_filename_frame_id_fallback": true
+  },
+  "competition": {
+    "enabled": true,
+    "strict_frame_mapping": true
+  },
+  "llm": {
+    "provider": "openai",
+    "model": "gpt-4o",
+    "max_tokens": 1000,
+    "temperature": 0.7,
+    "enable_cache": true,
+    "cache_ttl": 3600
+  },
+  "openai": {
+    "enabled": true,
+    "monitoring": true,
+    "models": [
+      "gpt-4o",
+      "gpt-4o-mini",
+      "gpt-3.5-turbo"
+    ],
+    "default_model": "gpt-4o",
+    "api_key": "YOUR_OPENAI_API_KEY_HERE",
+    "organization": null,
+    "max_retries": 3,
+    "timeout": 30,
+    "temperature": 0.7,
+    "max_tokens": 1000
+  },
+  "agno": {
+    "enabled": true,
+    "monitoring": true,
+    "storage_type": "sqlite",
+    "storage_path": "agno_storage.db",
+    "postgres_url": null,
+    "memory_enabled": true,
+    "session_management": true,
+    "agent_teams": true,
+    "performance_tracking": true,
+    "agentops_enabled": false,
+    "agentops_api_key": null
+  },
+  "gui": {
+    "window_width": 1670,
+    "window_height": 850,
+    "thumbnail_size": 350,
+    "max_results_display": 100,
+    "auto_export": false
+  },
+  "api": {
+    "host": "localhost",
+    "port": 5000,
+    "cors_enabled": true,
+    "rate_limit": 100,
+    "timeout": 30
+  },
+  "performance": {
+    "enable_monitoring": true,
+    "log_slow_operations": true,
+    "slow_operation_threshold": 5.0,
+    "memory_warning_threshold": 0.8
+  },
+  "logging": {
+    "encoding": "utf-8",
+    "console_encoding": "utf-8",
+    "safe_unicode": true,
+    "escape_non_ascii": true,
+    "level": "INFO"
+  },
+  "clip": {
+    "model_name": "openai/clip-vit-base-patch32"
+  },
+  "network": {
+    "machine_name": ""
+  }
+}
