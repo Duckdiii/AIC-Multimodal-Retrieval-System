@@ -17,6 +17,21 @@ Version: 2.1 (Refactored)
 
 import os
 import sys
+
+# Immediate feedback banner before heavy AI imports
+if __name__ == "__main__":
+    try:
+        if sys.platform == "win32":
+            sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    except Exception:
+        pass
+    print("=" * 60)
+    print("[AIC] Dang khoi dong AIC Multimodal Retrieval System...")
+    print("[AIC] Dang nap thu vien AI (PyTorch, Transformers, PyQt5)...")
+    print("[AIC] Qua trinh khoi dong mat khoang 5-15 giay, vui long cho...")
+    print("=" * 60)
+    sys.stdout.flush()
+
 import json
 import time
 import threading
