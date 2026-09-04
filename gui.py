@@ -6864,9 +6864,12 @@ class MainWindow(QMainWindow):
     
     def _on_video_grouping_toggled(self, enabled: bool):
         """Handle video grouping checkbox toggle"""
-        self.max_per_video_spinbox.setEnabled(enabled)
-        self.diversity_threshold_spinbox.setEnabled(enabled)
-        self.grouping_strategy_combo.setEnabled(enabled)
+        if getattr(self, 'max_per_video_spinbox', None):
+            self.max_per_video_spinbox.setEnabled(enabled)
+        if getattr(self, 'diversity_threshold_spinbox', None):
+            self.diversity_threshold_spinbox.setEnabled(enabled)
+        if getattr(self, 'grouping_strategy_combo', None):
+            self.grouping_strategy_combo.setEnabled(enabled)
 
     def _get_competition_search_mode(self) -> str:
         """Return the fixed retrieval mode exposed by the competition GUI."""
@@ -6904,11 +6907,27 @@ class MainWindow(QMainWindow):
                 limit=self.limit_spinbox.value(),
                 include_temporal_context=self.temporal_checkbox.isChecked(),
                 include_explanations=self._get_competition_include_explanations(),
-                # v4.0 features - get from UI controls
-                enable_video_grouping=getattr(self, 'video_grouping_checkbox', type('obj', (object,), {'isChecked': lambda: False})()).isChecked(),
-                max_results_per_video=getattr(self, 'max_per_video_spinbox', type('obj', (object,), {'value': lambda: 4})()).value(),
-                diversity_threshold=getattr(self, 'diversity_threshold_spinbox', type('obj', (object,), {'value': lambda: 0.3})()).value(),
-                video_grouping_strategy=getattr(self, 'grouping_strategy_combo', type('obj', (object,), {'currentText': lambda: 'balanced'})()).currentText(),
+                # v4.0 features - get from UI controls (with safe fallbacks)
+                enable_video_grouping=(
+                    self.video_grouping_checkbox.isChecked()
+                    if getattr(self, 'video_grouping_checkbox', None) is not None
+                    else False
+                ),
+                max_results_per_video=(
+                    self.max_per_video_spinbox.value()
+                    if getattr(self, 'max_per_video_spinbox', None) is not None
+                    else 4
+                ),
+                diversity_threshold=(
+                    self.diversity_threshold_spinbox.value()
+                    if getattr(self, 'diversity_threshold_spinbox', None) is not None
+                    else 0.3
+                ),
+                video_grouping_strategy=(
+                    self.grouping_strategy_combo.currentText()
+                    if getattr(self, 'grouping_strategy_combo', None) is not None
+                    else "balanced"
+                ),
                 enable_multi_scene_parsing=self.COMPETITION_ENABLE_MULTI_SCENE,
                 enable_vietnamese_processing=self.COMPETITION_ENABLE_VIETNAMESE_PROCESSING,
                 enable_trake_processing=self.COMPETITION_ENABLE_TRAKE_PROCESSING
